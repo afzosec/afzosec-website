@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body style="display: flex; flex-direction: column; min-height: 100vh;">
 
@@ -32,33 +32,35 @@
             </ul>
         </div>
     </nav>
-
+ 
+    <!-- blogs section -->
     <section class="blog-section section-padding">
         <div class="container">
             <h2 class="section-title">Cybersecurity Blog</h2>
-            <div class="blog-grid">
-                
-                <article class="blog-card glass">
-                    <div class="blog-img"><i class="fa-solid fa-unlock-keyhole"></i></div>
-                    <div class="blog-content">
-                        <span class="blog-meta">July 2026 | API Security</span>
-                        <h3>Understanding BOLA: The #1 Threat in OWASP API Top 10</h3>
-                        <p>Deep dive into Broken Object Level Authorization vulnerabilities and how poor backend checks break systems...</p>
-                        <a href="#" class="btn-text">Read Analysis <i class="fa-solid fa-chevron-right"></i></a>
-                    </div>
-                </article>
 
-                <article class="blog-card glass">
-                    <div class="blog-img"><i class="fa-solid fa-file-shield"></i></div>
-                    <div class="blog-content">
-                        <span class="blog-meta">June 2026 | AppSec</span>
-                        <h3>Securing Flask Apps in Production Ecosystems</h3>
-                        <p>A breakdown checklist for enforcing security contexts, managing environment secrets safely, and defensive headers configuration...</p>
-                        <a href="#" class="btn-text">Read Analysis <i class="fa-solid fa-chevron-right"></i></a>
-                    </div>
-                </article>
 
-            </div>
+            
+
+
+
+           <div class="blog-grid">
+    {% for post in posts %}
+    <article class="blog-card glass">
+        <div class="blog-img"><i class="fa-solid fa-unlock-keyhole"></i></div>
+        <div class="blog-content">
+            <span class="blog-meta">{{ post['date_posted'] }} | {{ post['category'] }}</span>
+            <h3>{{ post['title'] }}</h3>
+            <p>{{ post['summary'] }}</p>
+            <a href="/blog/{{ post['id'] }}" class="btn-text">Read Analysis <i class="fa-solid fa-chevron-right"></i></a>
+        </div>
+    </article>
+    {% endfor %}
+</div>
+
+
+
+
+                 
         </div>
     </section>
 
@@ -92,6 +94,6 @@
         </div>
     </footer>
 
-    <script src="static/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

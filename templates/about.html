@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body style="display: flex; flex-direction: column; min-height: 100vh;">
 
@@ -33,23 +33,17 @@
         </div>
     </nav>
 
-    <section class="about-section section-padding">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-grid">
-                <div class="about-card glass">
-                    <i class="fa-solid fa-terminal card-icon"></i>
-                    <h3>Biography</h3>
-                    <p>I am a passionate Cybersecurity Student and API Security enthusiast dedicated to finding hidden vulnerabilities within modern web infrastructures. My journey mixes classical software development paradigms with aggressive penetration testing vectors.</p>
-                </div>
-                <div class="about-card glass">
-                    <i class="fa-solid fa-graduation-cap card-icon"></i>
-                    <h3>Education & Goals</h3>
-                    <p>Currently deep-diving into networks, backend engineering, and application security threat modeling. My core roadmap centers on building <strong>AfzoSec</strong> into an industry-leading specialized API defense platform.</p>
-                </div>
-            </div>
+    <section class="about-hero-section section-padding">
+    <div class="container about-hero-grid">
+        <div class="about-hero-avatar">
+            <img src="{{ url_for('static', filename='profile.png') }}" alt="Afzal Khan" class="about-avatar" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
         </div>
-    </section>
+        <div class="about-hero-content">
+            <span class="cyber-badge"><i class="fa-solid fa-user-shield"></i> The Human Behind AfzoSec</span>
+            <p class="about-intro-text">[2-3 sentences, written like you're introducing yourself to someone at a conference — not a tagline, an actual thought.]</p>
+        </div>
+    </div>
+</section>
 
     <footer class="footer">
         <div class="container footer-grid">
@@ -81,6 +75,6 @@
         </div>
     </footer>
 
-    <script src="static/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

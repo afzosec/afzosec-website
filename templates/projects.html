@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body style="display: flex; flex-direction: column; min-height: 100vh;">
 
@@ -37,18 +37,26 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="project-grid">
-                
+
+                <!-- projects -->
+                <!--1-->
                 <div class="project-card glass">
                     <div class="project-img"><i class="fa-solid fa-bug"></i></div>
                     <div class="project-info">
                         <h3>API Vulnerability Scanner</h3>
                         <p>Automated script tool to check endpoints against critical OWASP API security issues.</p>
                         <div class="project-links">
-                            <a href="#" class="btn-link"><i class="fa-brands fa-github"></i> GitHub</a>
-                            <a href="#" class="btn-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                           <a href="https://github.com/afzosec" target="_blank" rel="noopener noreferrer" class="btn-link">
+                             <i class="fa-brands fa-github"></i> GitHub
+                            </a>
+                           <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="btn-link">
+                          <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                           </a>
                         </div>
                     </div>
                 </div>
+
+              <!--2-->
 
                 <div class="project-card glass">
                     <div class="project-img"><i class="fa-solid fa-key"></i></div>
@@ -56,59 +64,23 @@
                         <h3>Token Guardian</h3>
                         <p>A lightweight authentication middleware sample showcasing robust JWT validation mechanics.</p>
                         <div class="project-links">
-                            <a href="#" class="btn-link"><i class="fa-brands fa-github"></i> GitHub</a>
-                            <a href="#" class="btn-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                          <a href="https://github.com/afzosec" target="_blank" rel="noopener noreferrer" class="btn-link">
+                          <i class="fa-brands fa-github"></i> GitHub
+                          </a>
+                          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="btn-link">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card glass">
-                    <div class="project-img"><i class="fa-solid fa-network-wired"></i></div>
-                    <div class="project-info">
-                        <h3>Flask secureAPI Template</h3>
-                        <p>Production-ready Flask boilerplates implementing rate-limiting, CORS handling, and helmet protection headers.</p>
-                        <div class="project-links">
-                            <a href="#" class="btn-link"><i class="fa-brands fa-github"></i> GitHub</a>
-                            <a href="#" class="btn-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
-                        </div>
-                    </div>
-                </div>
+               
 
-                <div class="project-card glass">
-                    <div class="project-img"><i class="fa-solid fa-user-ninja"></i></div>
-                    <div class="project-info">
-                        <h3>Honeypot Endpoint Engine</h3>
-                        <p>Mimics legitimate targets to monitor, track, and log threat-actor recon patterns.</p>
-                        <div class="project-links">
-                            <a href="#" class="btn-link"><i class="fa-brands fa-github"></i> GitHub</a>
-                            <a href="#" class="btn-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
-                        </div>
-                    </div>
-                </div>
+               
 
-                <div class="project-card glass">
-                    <div class="project-img"><i class="fa-solid fa-database"></i></div>
-                    <div class="project-info">
-                        <h3>SQLi Detection Unit</h3>
-                        <p>A customized regex-driven inspection tool analyzing queries against relational database endpoints.</p>
-                        <div class="project-links">
-                            <a href="#" class="btn-link"><i class="fa-brands fa-github"></i> GitHub</a>
-                            <a href="#" class="btn-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
-                        </div>
-                    </div>
-                </div>
+               
 
-                <div class="project-card glass">
-                    <div class="project-img"><i class="fa-solid fa-mask"></i></div>
-                    <div class="project-info">
-                        <h3>AfzoSec Early Core</h3>
-                        <p>Early architectural design playground for telemetry metrics collection across microservices.</p>
-                        <div class="project-links">
-                            <a href="#" class="btn-link"><i class="fa-brands fa-github"></i> GitHub</a>
-                            <a href="#" class="btn-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
-                        </div>
-                    </div>
-                </div>
+              
 
             </div>
         </div>
@@ -144,6 +116,6 @@
         </div>
     </footer>
 
-    <script src="static/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Blog Post</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" style="max-width: 700px; margin: 50px auto;">
+        <h2>Add New Blog Post</h2>
+        <form method="POST" class="contact-form glass">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" name="title" required>
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <input type="text" name="category" required placeholder="API Security">
+            </div>
+            <div class="form-group">
+                <label>Date</label>
+                <input type="text" name="date_posted" required placeholder="July 2026">
+            </div>
+            <div class="form-group">
+                <label>Short Summary (shown on blog listing)</label>
+                <textarea name="summary" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label>Full Content (shown on the post page)</label>
+                <textarea name="content" rows="10" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Publish Post</button>
+        </form>
+    </div>
+</body>
+</html>

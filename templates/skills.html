@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body style="display: flex; flex-direction: column; min-height: 100vh;">
 
@@ -49,7 +49,7 @@
                 <div class="skills-category glass">
                     <h3><i class="fa-solid fa-globe"></i> Web & Backend</h3>
                     <div class="skill-item"><span>HTML5 & CSS3</span><div class="progress-bar"><div class="progress" style="width: 95%"></div></div></div>
-                    <div class="skill-item"><span>Flask</span><div class="progress-bar"><div class="progress" style="width: 85%"></div></div></div>
+                    <div class="skill-item"><span>Flask</span><div class="progress-bar"><div class="progress" style="width: 100%"></div></div></div>
                     <div class="skill-item"><span>REST APIs</span><div class="progress-bar"><div class="progress" style="width: 90%"></div></div></div>
                 </div>
 
@@ -102,6 +102,6 @@
         </div>
     </footer>
 
-    <script src="static/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

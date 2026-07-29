@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body style="display: flex; flex-direction: column; min-height: 100vh;">
 
@@ -41,8 +41,8 @@
                 <h3>Ready for Review</h3>
                 <p>Access full work breakdown, education matrices, and deep project specifics formatted cleanly for tracking ATS parsers.</p>
                 <div class="resume-actions">
-                    <a href="#" class="btn btn-primary ripple"><i class="fa-solid fa-file-arrow-down"></i> Download Resume</a>
-                    <a href="#" class="btn btn-secondary ripple"><i class="fa-solid fa-eye"></i> View Online</a>
+                   <a href="{{ url_for('static', filename='resume.pdf') }}" download class="btn btn-primary ripple"><i class="fa-solid fa-file-arrow-down"></i> Download Resume</a>
+                   <a href="{{ url_for('static', filename='resume.pdf') }}" target="_blank" class="btn btn-secondary ripple"><i class="fa-solid fa-eye"></i> View Online</a>
                 </div>
             </div>
         </div>
@@ -78,6 +78,6 @@
         </div>
     </footer>
 
-    <script src="static/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

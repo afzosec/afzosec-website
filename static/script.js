@@ -91,15 +91,16 @@ navLinks.forEach(link => {
         });
     });
 
+  // ==========================================
+    // 4. FORM HANDLER TEMPLATE (disabled — now using real Flask backend)
     // ==========================================
-    // 4. FORM HANDLER TEMPLATE
-    // ==========================================
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert("Payload intercepted safely! Form logic configured. Connect this directly to your Flask router endpoint in development.");
-            contactForm.reset();
-        });
-    }
+    // const contactForm = document.getElementById('contactForm');
+    // if (contactForm) {
+    //     contactForm.addEventListener('submit', (e) => {
+    //         e.preventDefault();
+    //         alert("Payload intercepted safely! Form logic configured. Connect this directly to your Flask router endpoint in development.");
+    //         contactForm.reset();
+    //     });
+    // }
+
 });

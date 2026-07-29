@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body style="display: flex; flex-direction: column; min-height: 100vh;">
 
@@ -38,19 +38,33 @@
             <h2 class="section-title">Certifications</h2>
             <div class="cert-grid">
                 
+                // certificates
                 <div class="cert-card glass">
                     <div class="cert-icon-box"><i class="fa-solid fa-award"></i></div>
                     <h4>CompTIA Security+</h4>
                     <p class="cert-org">Issued by CompTIA</p>
-                    <a href="#" class="btn-link-sec"><i class="fa-solid fa-eye"></i> View Verification</a>
+                   <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="btn-link-sec">
+                  <i class="fa-solid fa-eye"></i> View Verification
+                  </a>
                 </div>
 
                 <div class="cert-card glass">
                     <div class="cert-icon-box"><i class="fa-solid fa-award"></i></div>
                     <h4>Certified API Security Professional</h4>
                     <p class="cert-org">Issued by APIsec University</p>
-                    <a href="#" class="btn-link-sec"><i class="fa-solid fa-eye"></i> View Verification</a>
+                   <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="btn-link-sec">
+              <i class="fa-solid fa-eye"></i> View Verification
+               </a>
                 </div>
+
+                <div class="cert-card glass">
+    <div class="cert-icon-box"><i class="fa-solid fa-award"></i></div>
+    <h4>API security</h4>
+    <p class="cert-org">Issued by apisec university</p>
+    <a href="https://real-verification-link.com" target="_blank" rel="noopener noreferrer" class="btn-link-sec">
+        <i class="fa-solid fa-eye"></i> View Verification
+    </a>
+      </div>
 
             </div>
         </div>
@@ -86,6 +100,6 @@
         </div>
     </footer>
 
-    <script src="static/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
