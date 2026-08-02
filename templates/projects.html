@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Afzal Khan | Projects</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -41,7 +43,9 @@
                 <!-- projects -->
                 <!--1-->
                 <div class="project-card glass">
-                    <div class="project-img"><i class="fa-solid fa-bug"></i></div>
+                    <div class="project-img">
+     <img src="{{ url_for('static', filename='project_images/safar.png') }}" alt="API Vulnerability Scanner" style="width:100%; height:100%; object-fit:cover;">
+      </div>
                     <div class="project-info">
                         <h3>API Vulnerability Scanner</h3>
                         <p>Automated script tool to check endpoints against critical OWASP API security issues.</p>

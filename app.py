@@ -1,14 +1,19 @@
 from flask import Flask, render_template
 from dotenv import load_dotenv
+from flask import session
+from datetime import datetime
 import os
 
 load_dotenv()  # loads variables from .env
 
 app = Flask(__name__)
+#session for password
+app.secret_key = os.getenv('SECRET_KEY')
 
 
 # for contact form submission
 import sqlite3
+
 
 # database for contact form
 def init_db():
@@ -21,6 +26,7 @@ def init_db():
             email TEXT NOT NULL,
             subject TEXT NOT NULL,
             message TEXT NOT NULL,
+            is_read INTEGER DEFAULT 0,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
@@ -41,6 +47,7 @@ def init_blog_db():
             summary TEXT NOT NULL,
             content TEXT NOT NULL,
             date_posted TEXT NOT NULL,
+            thumbnail TEXT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
@@ -118,28 +125,54 @@ def skills():
 
 # route to add new blog posts
 
+from werkzeug.utils import secure_filename
+
 @app.route('/add-blog', methods=['GET', 'POST'])
 def add_blog():
     if request.method == 'POST':
+        password = request.form.get('password')
+        if password != os.getenv('ADMIN_PASSWORD'):
+            return "Incorrect password", 401
+
         title = request.form.get('title')
         category = request.form.get('category')
         summary = request.form.get('summary')
         content = request.form.get('content')
-        date_posted = request.form.get('date_posted')
+        date_posted = datetime.now().strftime('%B %d, %Y')
+
+        # Handle thumbnail upload
+        thumbnail_filename = None
+        thumbnail_file = request.files.get('thumbnail')
+        if thumbnail_file and thumbnail_file.filename:
+            thumbnail_filename = secure_filename(thumbnail_file.filename)
+            if thumbnail_filename:
+                thumbnail_file.save(os.path.join('static/blog_images', thumbnail_filename))
+            else:
+                thumbnail_filename = None
+
+        # Handle multiple content images
+        content_images = request.files.getlist('content_images')
+        for index, image_file in enumerate(content_images, start=1):
+            if image_file and image_file.filename != '':
+                safe_name = secure_filename(image_file.filename)
+                image_file.save(os.path.join('static/blog_images', safe_name))
+                placeholder = '{{image' + str(index) + '}}'
+                image_html = f'<img src="/static/blog_images/{safe_name}" alt="Blog image {index}" style="width:100%; border-radius:8px; margin:20px 0;">'
+                content = content.replace(placeholder, image_html)
 
         conn = sqlite3.connect('messages.db')
         cursor = conn.cursor()
+       
         cursor.execute(
-            'INSERT INTO blog_posts (title, category, summary, content, date_posted) VALUES (?, ?, ?, ?, ?)',
-            (title, category, summary, content, date_posted)
-        )
+    'INSERT INTO blog_posts (title, category, summary, content, date_posted, thumbnail) VALUES (?, ?, ?, ?, ?, ?)',
+    (title, category, summary, content, date_posted, thumbnail_filename)
+)
         conn.commit()
         conn.close()
 
         return redirect('/blog.html')
 
     return render_template('add_blog.html')
-
 
 
 # blogs detail route to read blog
@@ -158,6 +191,96 @@ def blog_detail(post_id):
     return render_template('blog_detail.html', post=post)
 
 
+#log out add blog form
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    return redirect('/add-blog')
+
+
+# delte route for blogs
+@app.route('/delete-blog/<int:post_id>', methods=['GET', 'POST'])
+def delete_blog(post_id):
+    if request.method == 'POST':
+        password = request.form.get('password')
+        if password != os.getenv('ADMIN_PASSWORD'):
+            return "Incorrect password", 401
+
+        conn = sqlite3.connect('messages.db')
+        cursor = conn.cursor()
+        cursor.execute('DELETE FROM blog_posts WHERE id = ?', (post_id,))
+        conn.commit()
+        conn.close()
+
+        return redirect('/blog.html')
+
+    return render_template('delete_blog.html', post_id=post_id)
+
+
+
+#manage blogs(delete)
+@app.route('/manage-blog', methods=['GET', 'POST'])
+def manage_blog():
+    if request.method == 'POST':
+        password = request.form.get('password')
+        if password != os.getenv('ADMIN_PASSWORD'):
+            return "Incorrect password", 401
+
+        conn = sqlite3.connect('messages.db')
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM blog_posts ORDER BY id DESC')
+        posts = cursor.fetchall()
+        conn.close()
+
+        return render_template('manage_blog.html', posts=posts, password=password)
+
+    return render_template('login.html', action='/manage-blog')
+
+
+
+
+# view contact form messages
+@app.route('/view_messages', methods=['GET', 'POST'])
+def view_messages():
+    if request.method == 'POST':
+        password = request.form.get('password')
+        if password != os.getenv('ADMIN_PASSWORD'):
+            return "Incorrect password", 401
+
+        conn = sqlite3.connect('messages.db')
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM messages ORDER BY id DESC')
+        messages = cursor.fetchall()
+
+        unread_count = sum(1 for msg in messages if msg['is_read'] == 0)
+
+        # Mark all as read now that you've viewed them
+        cursor.execute('UPDATE messages SET is_read = 1')
+        conn.commit()
+        conn.close()
+
+        return render_template('view_messages.html', messages=messages, password=password, unread_count=unread_count)
+
+    return render_template('login.html', action='/view_messages')
+
+
+
+# route for delete messages (contact form)
+@app.route('/delete-message/<int:msg_id>', methods=['POST'])
+def delete_message(msg_id):
+    password = request.form.get('password')
+    if password != os.getenv('ADMIN_PASSWORD'):
+        return "Incorrect password", 401
+
+    conn = sqlite3.connect('messages.db')
+    cursor = conn.cursor()
+    cursor.execute('DELETE FROM messages WHERE id = ?', (msg_id,))
+    conn.commit()
+    conn.close()
+
+    return redirect('/view_messages')
 
 
 if __name__ == '__main__':

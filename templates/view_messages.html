@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Messages</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" style="max-width: 800px; margin: 50px auto;">
+        <h2>Contact Form Messages</h2>
+
+        {% if unread_count > 0 %}
+            <p style="color: #00ffcc; font-weight: bold;">🔔 You have {{ unread_count }} new message{{ 's' if unread_count != 1 else '' }}</p>
+        {% endif %}
+
+        {% if messages|length == 0 %}
+            <p>No messages yet.</p>
+        {% endif %}
+
+        {% for msg in messages %}
+        <div class="glass" style="padding: 20px; margin-bottom: 15px; {% if msg['is_read'] == 0 %}border-left: 4px solid #00ffcc;{% endif %}">
+            <p><strong>From:</strong> {{ msg['name'] }} ({{ msg['email'] }})</p>
+            <p><strong>Subject:</strong> {{ msg['subject'] }}</p>
+            <p><strong>Message:</strong> {{ msg['message'] }}</p>
+            <p style="opacity: 0.6; font-size: 0.85em;">Received: {{ msg['created_at'] }}</p>
+            <form method="POST" action="/delete-message/{{ msg['id'] }}" style="margin-top: 10px;">
+                <input type="hidden" name="password" value="{{ password }}">
+                <button type="submit" class="btn" style="background: #e74c3c; padding: 5px 15px;">Delete</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

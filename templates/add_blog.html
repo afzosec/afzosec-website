@@ -8,29 +8,51 @@
 <body>
     <div class="container" style="max-width: 700px; margin: 50px auto;">
         <h2>Add New Blog Post</h2>
-        <form method="POST" class="contact-form glass">
-            <div class="form-group">
-                <label>Title</label>
-                <input type="text" name="title" required>
-            </div>
-            <div class="form-group">
-                <label>Category</label>
-                <input type="text" name="category" required placeholder="API Security">
-            </div>
-            <div class="form-group">
-                <label>Date</label>
-                <input type="text" name="date_posted" required placeholder="July 2026">
-            </div>
-            <div class="form-group">
-                <label>Short Summary (shown on blog listing)</label>
-                <textarea name="summary" rows="3" required></textarea>
-            </div>
-            <div class="form-group">
-                <label>Full Content (shown on the post page)</label>
-                <textarea name="content" rows="10" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Publish Post</button>
-        </form>
+       
+
+        <form method="POST" enctype="multipart/form-data" class="contact-form glass">
+    <div class="form-group">
+        <label>Admin Password</label>
+        <input type="password" name="password" required autocomplete="new-password">
+    </div>
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" name="title" required>
+    </div>
+    <div class="form-group">
+        <label>Category</label>
+        <input type="text" name="category" required placeholder="API Security">
+    </div>
+    
+   <!--thumbnail image-->
+    <div class="form-group">
+    <label>Thumbnail Image (optional)</label>
+    <input type="file" name="thumbnail" accept="image/*">
+</div>
+
+ <!--insert images in article-->
+<div class="form-group">
+    <label>Content Images (optional — upload in the order you'll reference them)</label>
+    <input type="file" name="content_images" accept="image/*" multiple>
+    <p style="font-size: 0.85em; opacity: 0.7; margin-top: 5px;">
+        In your content below, type <code>{{image1}}</code> for the first image, <code>{{image2}}</code> for the second, and so on — they'll be replaced with the actual pictures.
+    </p>
+</div>
+
+
+   
+    <div class="form-group">
+        <label>Short Summary (shown on blog listing)</label>
+        <textarea name="summary" rows="3" required></textarea>
+    </div>
+    <div class="form-group">
+        <label>Full Content (shown on the post page)</label>
+        <textarea name="content" rows="10" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Publish Post</button>
+</form>
+
+
     </div>
 </body>
 </html>

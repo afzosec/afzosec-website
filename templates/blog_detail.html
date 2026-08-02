@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ post['title'] }} | AfzoSec Blog</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -14,19 +16,19 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">AFZO<span>SEC</span></a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="blog.html" class="nav-link">Blog</a></li>
-            </ul>
+          <a href="/" class="logo">AFZO<span>SEC</span></a>
+<ul class="nav-menu">
+    <li><a href="/" class="nav-link">Home</a></li>
+    <li><a href="/blog.html" class="nav-link">Blog</a></li>
+</ul>
         </div>
     </nav>
 
     <section class="section-padding">
         <div class="container" style="max-width: 800px;">
-            <span class="blog-meta">{{ post['date_posted'] }} | {{ post['category'] }}</span>
-            <h1>{{ post['title'] }}</h1>
-            <p style="line-height: 1.8; margin-top: 20px;">{{ post['content'] }}</p>
+            <span class="blog-meta">{{ post['created_at'] }} | {{ post['category'] }}</span>
+            <h1 class="blog-post-title">{{ post['title'] }}</h1>
+            <div class="blog-post-content">{{ post['content'] | safe }}</div>
             <a href="/blog.html" class="btn-text" style="margin-top: 30px; display: inline-block;">
                 <i class="fa-solid fa-chevron-left"></i> Back to Blog
             </a>

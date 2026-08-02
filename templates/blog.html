@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Afzal Khan | Cyber Security Blog</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -44,17 +46,28 @@
 
 
            <div class="blog-grid">
-    {% for post in posts %}
-    <article class="blog-card glass">
-        <div class="blog-img"><i class="fa-solid fa-unlock-keyhole"></i></div>
-        <div class="blog-content">
-            <span class="blog-meta">{{ post['date_posted'] }} | {{ post['category'] }}</span>
-            <h3>{{ post['title'] }}</h3>
-            <p>{{ post['summary'] }}</p>
-            <a href="/blog/{{ post['id'] }}" class="btn-text">Read Analysis <i class="fa-solid fa-chevron-right"></i></a>
-        </div>
-    </article>
-    {% endfor %}
+    
+
+            {% for post in posts %}
+<article class="blog-card glass">
+    <div class="blog-img">
+        {% if post['thumbnail'] %}
+            <img src="{{ url_for('static', filename='blog_images/' + post['thumbnail']) }}" alt="{{ post['title'] }}" style="width:100%; height:100%; object-fit:cover;">
+        {% else %}
+            <i class="fa-solid fa-unlock-keyhole"></i>
+        {% endif %}
+    </div>
+    <div class="blog-content">
+        <span class="blog-meta">{{ post['created_at'] }} | {{ post['category'] }}</span>
+        <h3>{{ post['title'] }}</h3>
+        <p>{{ post['summary'] }}</p>
+        <a href="/blog/{{ post['id'] }}" class="btn-text">Read Analysis <i class="fa-solid fa-chevron-right"></i></a>
+        
+
+    </div>
+</article>
+{% endfor %}
+
 </div>
 
 

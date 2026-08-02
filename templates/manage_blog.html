@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Blog Posts</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" style="max-width: 800px; margin: 50px auto;">
+        <h2>Manage Blog Posts</h2>
+        {% for post in posts %}
+        <div class="glass" style="padding: 15px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+            <span>{{ post['title'] }} ({{ post['date_posted'] }})</span>
+            <form method="POST" action="/delete-blog/{{ post['id'] }}" style="margin: 0;">
+                <input type="hidden" name="password" value="{{ password }}">
+                <button type="submit" class="btn" style="background: #e74c3c; padding: 5px 15px;">Delete</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -535,6 +535,19 @@ body {
     transform: translateX(4px);
 }
 
+.blog-post-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.blog-post-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-top: 20px;
+}
+
 /* ==========================================================================
    CERTIFICATES, RESUME & CONTACT SECTIONS
    ========================================================================== */
@@ -843,19 +856,24 @@ body {
     .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
     .nav-menu {
-        position: fixed;
-        top: -100%;
-        left: 0;
-        flex-direction: column;
-        background-color: var(--bg-primary);
-        border-bottom: 1px solid var(--border-color);
-        width: 100%;
-        text-align: center;
-        padding: 40px 0;
-        transition: 0.5s ease-in-out;
-        gap: 30px;
-        z-index: 999;
-    }
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    flex-direction: column;
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
+    text-align: center;
+    padding: 40px 0;
+    gap: 30px;
+    z-index: 999;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+}
+.nav-menu.active {
+    display: flex;
+}
     .nav-menu.active {
         top: 70px;
     }
@@ -863,4 +881,8 @@ body {
         grid-template-columns: 1fr;
         gap: 30px;
     }
+    .blog-post-title {
+    font-size: 2rem;
 }
+}
+

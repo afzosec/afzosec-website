@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Blog Post</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" style="max-width: 500px; margin: 100px auto;">
+        <h2>Delete Blog Post #{{ post_id }}</h2>
+        <p>Enter admin password to confirm deletion. This cannot be undone.</p>
+        <form method="POST" class="contact-form glass">
+            <div class="form-group">
+                <label>Admin Password</label>
+                <input type="password" name="password" required autocomplete="new-password">
+            </div>
+            <button type="submit" class="btn btn-primary" style="background: #e74c3c;">Confirm Delete</button>
+        </form>
+    </div>
+</body>
+</html>
