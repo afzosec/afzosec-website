@@ -28,16 +28,22 @@ AfzoSec.
 - Resume
 - Contact
 
+
 ## Running locally
 
 \`\`\`bash
 git clone https://github.com/afzosec/afzosec-website.git
+
 cd afzosec-website
+
 pip install -r requirements.txt
 python app.py
 \`\`\`
 
 Then visit `http://127.0.0.1:5000` in your browser.
+
+
+
 
 ## Roadmap
 
