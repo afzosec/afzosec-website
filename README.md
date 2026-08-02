@@ -31,8 +31,8 @@ AfzoSec.
 ## Running locally
 
 \`\`\`bash
-git clone https://github.com/https://github.com/afzosec?tab=repositories/afzosec.git
-cd afzosec
+git clone https://github.com/afzosec/Afzosec-project.git
+cd Afzosec-project
 pip install -r requirements.txt
 python app.py
 \`\`\`
@@ -48,8 +48,8 @@ Then visit `http://127.0.0.1:5000` in your browser.
 ## Contact
 
 - Website:
-- LinkedIn: https://www.linkedin.com/in/afzal-kakar-749304366/
-- GitHub: https://github.com/afzosec?tab=repositories
+- LinkedIn: [Afzal Kakar](https://www.linkedin.com/in/afzal-kakar-749304366/
+- GitHub: [afzosec](https://github.com/afzosec)
 
 ---
 Designed and developed by **Afzal Khan**
