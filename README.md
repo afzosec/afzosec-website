@@ -49,7 +49,7 @@ Then visit `http://127.0.0.1:5000` in your browser.
 ## Contact
 
 - Website:
-- LinkedIn: [Afzal Kakar](https://www.linkedin.com/in/afzal-kakar-749304366/
+- LinkedIn: [Afzal Khan](https://www.linkedin.com/in/afzal-kakar-749304366/)
 - GitHub: [afzosec](https://github.com/afzosec)
 
 ---
