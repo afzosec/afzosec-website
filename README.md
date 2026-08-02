@@ -31,8 +31,9 @@ AfzoSec.
 ## Running locally
 
 \`\`\`bash
-git clone https://github.com/afzosec/Afzosec-project.git
-cd Afzosec-project
+git clone https://github.com/afzosec/afzosec-website.git
+
+cd afzosec-website
 pip install -r requirements.txt
 python app.py
 \`\`\`
