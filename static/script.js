@@ -33,9 +33,10 @@ navLinks.forEach(link => {
     const textTarget = document.querySelector('.typing-text');
     if (textTarget) {
         const rolesArray = [
-            "Cybersecurity Student.",
-            "API Security Enthusiast.",
-            "Future Founder of AfzoSec."
+           "Cybersecurity Student",
+           "API Security Enthusiast",
+           "FAST-NUCES Islamabad",
+           "Aspiring Security Engineer"
         ];
         let roleIndex = 0;
         let charIndex = 0;
@@ -98,7 +99,7 @@ navLinks.forEach(link => {
     // if (contactForm) {
     //     contactForm.addEventListener('submit', (e) => {
     //         e.preventDefault();
-    //         alert("Payload intercepted safely! Form logic configured. Connect this directly to your Flask router endpoint in development.");
+    //         alert("Payloaogic configured. Connect this directly to your Flask router endpoint in development.");
     //         contactForm.reset();
     //     });
     // }
