@@ -20,7 +20,12 @@
         {% endif %}
 
         {% for msg in messages %}
-        <div class="glass" style="padding: 20px; margin-bottom: 15px; {% if msg['is_read'] == 0 %}border-left: 4px solid #00ffcc;{% endif %}">
+      {% if msg['is_read'] == 0 %}
+    <div class="glass" style="padding: 20px; margin-bottom: 15px; border-left: 4px solid #00ffcc;">
+{% else %}
+    <div class="glass" style="padding: 20px; margin-bottom: 15px;">
+{% endif %}
+
             <p><strong>From:</strong> {{ msg['name'] }} ({{ msg['email'] }})</p>
             <p><strong>Subject:</strong> {{ msg['subject'] }}</p>
             <p><strong>Message:</strong> {{ msg['message'] }}</p>
