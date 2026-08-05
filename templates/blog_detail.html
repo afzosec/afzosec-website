@@ -18,8 +18,14 @@
         <div class="nav-container">
           <a href="/" class="logo">AFZO<span>SEC</span></a>
 <ul class="nav-menu">
-    <li><a href="/" class="nav-link">Home</a></li>
-    <li><a href="/blog.html" class="nav-link">Blog</a></li>
+    <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+            <li><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
+            <li><a href="{{ url_for('skills') }}" class="nav-link">Skills</a></li>
+            <li><a href="{{ url_for('projects') }}" class="nav-link">Projects</a></li>
+            <li><a href="{{ url_for('blog') }}" class="nav-link">Blog</a></li>
+            <li><a href="{{ url_for('certificates') }}" class="nav-link">Certificates</a></li>
+            <li><a href="{{ url_for('resume') }}" class="nav-link">Resume</a></li>
+            <li><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
 </ul>
         </div>
     </nav>
@@ -34,6 +40,39 @@
             </a>
         </div>
     </section>
+
+    <footer class="footer">
+    <div class="container footer-grid">
+        <div class="footer-brand">
+            <a href="{{ url_for('home') }}" class="logo">AFZO<span>SEC</span></a>
+            <p>Securing APIs, breaking monolithic designs, protecting the digital infrastructure of tomorrow.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Sitemap Links</h4>
+            <ul>
+                 <li><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
+            <li><a href="{{ url_for('skills') }}" class="nav-link">Skills</a></li>
+            <li><a href="{{ url_for('projects') }}" class="nav-link">Projects</a></li>
+            <li><a href="{{ url_for('blog') }}" class="nav-link">Blog</a></li>
+            <li><a href="{{ url_for('certificates') }}" class="nav-link">Certificates</a></li>
+            <li><a href="{{ url_for('resume') }}" class="nav-link">Resume</a></li>
+            <li><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-socials">
+            <h4>Signal Feeds</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom text-center">
+        <p>&copy; 2026 AFZOSEC. All Rights Reserved.</p>
+        <p class="credit">Designed and Developed by <strong>Afzal Khan</strong></p>
+    </div>
+</footer>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

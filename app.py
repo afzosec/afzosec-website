@@ -5,16 +5,16 @@ from werkzeug.utils import secure_filename
 import os
 import sqlite3
 
-load_dotenv()  # loads variables from .env
-
-app = Flask(__name__)
-# session for password
-app.secret_key = os.getenv('SECRET_KEY')
-
 # Dynamic path configuration that adapts to both your local PC and PythonAnywhere
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATABASE_PATH = os.path.join(BASE_DIR, 'messages.db')
 UPLOAD_FOLDER = os.path.join(BASE_DIR, 'static', 'blog_images')
+
+load_dotenv(os.path.join(BASE_DIR, '.env'))  # loads variables from .env
+
+app = Flask(__name__)
+# session for password
+app.secret_key = os.getenv('SECRET_KEY')
 
 # database for contact form
 def init_db():
@@ -73,19 +73,19 @@ def submit_contact():
     conn.commit()
     conn.close()
 
-    return redirect('/contact.html?success=true')
+    return redirect('/contact?success=true')
 
 @app.route('/')
 @app.route('/index.html')
 def home():
     return render_template('index.html')
 
-@app.route('/about.html')
+@app.route('/about')
 def about():
     return render_template('about.html')
 
 # rendering blogs from database
-@app.route('/blog.html')
+@app.route('/blog')
 def blog():
     conn = sqlite3.connect(DATABASE_PATH)
     conn.row_factory = sqlite3.Row
@@ -95,23 +95,23 @@ def blog():
     conn.close()
     return render_template('blog.html', posts=posts)
 
-@app.route('/certificates.html')
+@app.route('/certificates')
 def certificates():
     return render_template('certificates.html')
 
-@app.route('/contact.html')
+@app.route('/contact')
 def contact():
     return render_template('contact.html')
 
-@app.route('/projects.html')
+@app.route('/projects')
 def projects():
     return render_template('projects.html')
 
-@app.route('/resume.html')
+@app.route('/resume')
 def resume():
     return render_template('resume.html')
 
-@app.route('/skills.html')
+@app.route('/skills')
 def skills():
     return render_template('skills.html')
 
@@ -154,7 +154,7 @@ def add_blog():
 
         conn = sqlite3.connect(DATABASE_PATH)
         cursor = conn.cursor()
-       
+
         cursor.execute(
             'INSERT INTO blog_posts (title, category, summary, content, date_posted, thumbnail) VALUES (?, ?, ?, ?, ?, ?)',
             (title, category, summary, content, date_posted, thumbnail_filename)
@@ -162,7 +162,7 @@ def add_blog():
         conn.commit()
         conn.close()
 
-        return redirect('/blog.html')
+        return redirect('/blog')
 
     return render_template('add_blog.html')
 
@@ -201,7 +201,7 @@ def delete_blog(post_id):
         conn.commit()
         conn.close()
 
-        return redirect('/blog.html')
+        return redirect('/blog')
 
     return render_template('delete_blog.html', post_id=post_id)
 
@@ -225,7 +225,7 @@ def manage_blog():
     return render_template('login.html', action='/manage-blog')
 
 # view contact form messages
-@app.route('/view_messages', methods=['GET', 'POST'])
+@app.route('/view-messages', methods=['GET', 'POST'])
 def view_messages():
     if request.method == 'POST':
         password = request.form.get('password')
@@ -247,7 +247,7 @@ def view_messages():
 
         return render_template('view_messages.html', messages=messages, password=password, unread_count=unread_count)
 
-    return render_template('login.html', action='/view_messages')
+    return render_template('login.html', action='/view-messages')
 
 # route for delete messages (contact form)
 @app.route('/delete-message/<int:msg_id>', methods=['POST'])
@@ -261,7 +261,7 @@ def delete_message(msg_id):
     cursor.execute('DELETE FROM messages WHERE id = ?', (msg_id,))
     conn.commit()
     conn.close()
-    return redirect('/view_messages')
+    return redirect('/view-messages')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=os.getenv('FLASK_DEBUG', 'False') == 'True')

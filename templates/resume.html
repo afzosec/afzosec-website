@@ -16,22 +16,22 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">AFZO<span>SEC</span></a>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="skills.html" class="nav-link">Skills</a></li>
-                <li><a href="projects.html" class="nav-link">Projects</a></li>
-                <li><a href="blog.html" class="nav-link">Blog</a></li>
-                <li><a href="certificates.html" class="nav-link">Certificates</a></li>
-                <li><a href="resume.html" class="nav-link">Resume</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
+           <a href="{{ url_for('home') }}" class="logo">AFZO<span>SEC</span></a>
+<div class="menu-toggle" id="mobile-menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+</div>
+<ul class="nav-menu">
+    <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+    <li><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
+    <li><a href="{{ url_for('skills') }}" class="nav-link">Skills</a></li>
+    <li><a href="{{ url_for('projects') }}" class="nav-link">Projects</a></li>
+    <li><a href="{{ url_for('blog') }}" class="nav-link">Blog</a></li>
+    <li><a href="{{ url_for('certificates') }}" class="nav-link">Certificates</a></li>
+    <li><a href="{{ url_for('resume') }}" class="nav-link">Resume</a></li>
+    <li><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+</ul>
         </div>
     </nav>
 
@@ -59,10 +59,14 @@
             <div class="footer-links">
                 <h4>Sitemap Links</h4>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="skills.html">Skills</a></li>
-                    <li><a href="projects.html">Projects</a></li>
+                   <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+            <li><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
+            <li><a href="{{ url_for('skills') }}" class="nav-link">Skills</a></li>
+            <li><a href="{{ url_for('projects') }}" class="nav-link">Projects</a></li>
+            <li><a href="{{ url_for('blog') }}" class="nav-link">Blog</a></li>
+            <li><a href="{{ url_for('certificates') }}" class="nav-link">Certificates</a></li>
+            <li><a href="{{ url_for('resume') }}" class="nav-link">Resume</a></li>
+            <li><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-socials">
