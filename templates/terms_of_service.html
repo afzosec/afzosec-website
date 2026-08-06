@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Afzal Khan | About Me</title>
+    <title>Terms of Service | AfzoSec</title>
    
+
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
     <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='favicon-96x96.png') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
-    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -29,7 +27,7 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
-                <li><a href="{{ url_for('about') }}" class="nav-link active">About</a></li>
+                <li><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
                 <li><a href="{{ url_for('skills') }}" class="nav-link">Skills</a></li>
                 <li><a href="{{ url_for('projects') }}" class="nav-link">Projects</a></li>
                 <li><a href="{{ url_for('blog') }}" class="nav-link">Blog</a></li>
@@ -40,16 +38,35 @@
         </div>
     </nav>
 
-    <section class="about-hero-section section-padding">
-        <div class="container about-hero-grid">
-            <div class="about-hero-avatar">
-                <img src="{{ url_for('static', filename='about.jpg') }}" alt="Afzal Khan" class="about-avatar">
-            </div>
-            <div class="about-hero-content">
-                <span class="cyber-badge"><i class="fa-solid fa-user-shield"></i> The Human Behind AfzoSec</span>
-                <p class="about-intro-text">
-                    I’m a Cybersecurity student focused on breaking down complex security concepts, auditing APIs, and building resilient web backend architectures. When I’m not analyzing network packets or writing Flask applications, I’m usually documenting my security experiments and tooling on AfzoSec. My main goal is simple: understand systems so deeply that securing them becomes second nature.
-                </p>
+    <section class="section-padding">
+        <div class="container" style="max-width: 800px;">
+            <h1 class="section-title">Terms of Service</h1>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Last updated: August 2026</p>
+
+            <div style="line-height: 1.8;">
+                <h2 style="margin-top: 30px; margin-bottom: 15px;">1. Acceptance of Terms</h2>
+                <p style="margin-bottom: 16px;">By accessing and using afzosec.com, you accept and agree to be bound by these Terms of Service. If you do not agree, please do not use this site.</p>
+
+                <h2 style="margin-top: 30px; margin-bottom: 15px;">2. Use of Site</h2>
+                <p style="margin-bottom: 16px;">This site is intended for personal, informational, and educational use related to cybersecurity, API security, and related topics. You agree not to misuse this site, including attempting unauthorized access to any part of the site's backend, database, or administrative functions.</p>
+
+                <h2 style="margin-top: 30px; margin-bottom: 15px;">3. Intellectual Property</h2>
+                <p style="margin-bottom: 16px;">All content on this site, including blog posts, articles, graphics, and code snippets, is the property of Afzal Khan / AfzoSec unless otherwise stated. Content may not be reproduced or redistributed without permission, except for brief excerpts with proper attribution.</p>
+
+                <h2 style="margin-top: 30px; margin-bottom: 15px;">4. Third-Party Content and Advertising</h2>
+                <p style="margin-bottom: 16px;">This site may display advertisements through Google AdSense and may link to third-party websites. We are not responsible for the content, privacy practices, or accuracy of external sites linked from this site.</p>
+
+                <h2 style="margin-top: 30px; margin-bottom: 15px;">5. Disclaimer</h2>
+                <p style="margin-bottom: 16px;">Content on this site, including blog posts about cybersecurity topics, is provided for informational and educational purposes only. It should not be considered professional security advice for any specific system or organization. We make no warranties about the completeness or accuracy of this information.</p>
+
+                <h2 style="margin-top: 30px; margin-bottom: 15px;">6. Limitation of Liability</h2>
+                <p style="margin-bottom: 16px;">AfzoSec and its owner shall not be liable for any damages arising from the use of, or inability to use, this site or its content.</p>
+
+                <h2 style="margin-top: 30px; margin-bottom: 15px;">7. Changes to Terms</h2>
+                <p style="margin-bottom: 16px;">These Terms of Service may be updated periodically. Continued use of the site after changes constitutes acceptance of the revised terms.</p>
+
+                <h2 style="margin-top: 30px; margin-bottom: 15px;">8. Contact</h2>
+                <p style="margin-bottom: 16px;">Questions about these Terms of Service can be directed through our <a href="{{ url_for('contact') }}" style="color: var(--accent-cyan);">Contact page</a>.</p>
             </div>
         </div>
     </section>
@@ -63,7 +80,7 @@
             <div class="footer-links">
                 <h4>Sitemap Links</h4>
                 <ul>
-                   <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+                           <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
             <li><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
             <li><a href="{{ url_for('skills') }}" class="nav-link">Skills</a></li>
             <li><a href="{{ url_for('projects') }}" class="nav-link">Projects</a></li>
@@ -86,10 +103,7 @@
         </div>
         <div class="footer-bottom text-center">
             <p>&copy; 2026 AFZOSEC. All Rights Reserved.</p>
-            <p class="credit">Designed and Developed by <strong>Afzal Khan</strong></p>
         </div>
-
-      
     </footer>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
