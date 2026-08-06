@@ -76,9 +76,12 @@ def submit_contact():
     return redirect('/contact?success=true')
 
 @app.route('/')
-@app.route('/index.html')
 def home():
     return render_template('index.html')
+
+@app.route('/index.html')
+def home_redirect():
+    return redirect('/', code=301)
 
 @app.route('/about')
 def about():
