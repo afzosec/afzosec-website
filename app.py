@@ -110,6 +110,10 @@ def contact():
 def projects():
     return render_template('projects.html')
 
+@app.route('/project/<project_name>')
+def project_detail(project_name):
+    return render_template(f'projects/{project_name}.html')
+
 @app.route('/resume')
 def resume():
     return render_template('resume.html')
