@@ -848,6 +848,12 @@ body {
     .hero-content h1 {
         font-size: 2.5rem;
     }
+    .hero-content h2 {
+        font-size: 1.3rem;
+        height: auto;
+        min-height: 3.2rem;
+        line-height: 1.4;
+    }
     .menu-toggle {
         display: block;
     }
