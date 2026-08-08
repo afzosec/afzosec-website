@@ -4,6 +4,10 @@ from datetime import datetime
 from werkzeug.utils import secure_filename
 import os
 import sqlite3
+from flask import jsonify
+
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 # Dynamic path configuration that adapts to both your local PC and PythonAnywhere
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -13,6 +17,9 @@ UPLOAD_FOLDER = os.path.join(BASE_DIR, 'static', 'blog_images')
 load_dotenv(os.path.join(BASE_DIR, '.env'))  # loads variables from .env
 
 app = Flask(__name__)
+#password limiter
+limiter = Limiter(get_remote_address, app=app, default_limits=[])
+
 # session for password
 app.secret_key = os.getenv('SECRET_KEY')
 
@@ -124,6 +131,7 @@ def skills():
 
 # route to add new blog posts
 @app.route('/add-blog', methods=['GET', 'POST'])
+@limiter.limit("5 per 15 minute; 15 per hour; 30 per day")
 def add_blog():
     if request.method == 'POST':
         password = request.form.get('password')
@@ -214,6 +222,7 @@ def delete_blog(post_id):
 
 # manage blogs(delete)
 @app.route('/manage-blog', methods=['GET', 'POST'])
+@limiter.limit("5 per 15 minute; 15 per hour; 30 per day")
 def manage_blog():
     if request.method == 'POST':
         password = request.form.get('password')
@@ -233,6 +242,7 @@ def manage_blog():
 
 # view contact form messages
 @app.route('/view-messages', methods=['GET', 'POST'])
+@limiter.limit("5 per 15 minute; 15 per hour; 30 per day")
 def view_messages():
     if request.method == 'POST':
         password = request.form.get('password')
@@ -280,6 +290,13 @@ def privacy_policy():
 @app.route('/terms-of-service')
 def terms_of_service():
         return render_template('terms_of_service.html')
+
+# to many attempts for password
+@app.errorhandler(429)
+def ratelimit_handler(e):
+    return f"Too many login attempts. Please wait a moment and try again. ({e.description})", 429
+
+
     
 
 if __name__ == '__main__':
