@@ -1,12 +1,12 @@
-# AfzoSec — Personal Portfolio & Cybersecurity Brand Website
+# AfzoSec — Personal Portfolio 
 
 A personal portfolio website built with Flask, showcasing my journey as a 
-cybersecurity student specializing in API security. This site serves as 
+cybersecurity student specializing in cloud security. This site serves as 
 the foundation for AfzoSec.
 
 ## About
 
-I'm Afzal Khan, a BS Cybersecurity student focused on API security, 
+I'm Afzal Khan, a BS Cybersecurity student focused on cloud security, 
 backend architecture, and building resilient web systems. This website 
 documents my projects, security research, and writing as I work toward 
 AfzoSec.
@@ -47,8 +47,8 @@ Then visit `http://127.0.0.1:5000` in your browser.
 
 ## Roadmap
 
-- [ ] Publish API security blog series
-- [ ] Add vulnerable-API practice project
+- [ ] Publish cloud security blog series
+- [ ] Add vulnerable-cloud practice project
 - [ ] Launch AfzoSec as a security consultancy
 
 ## Contact
